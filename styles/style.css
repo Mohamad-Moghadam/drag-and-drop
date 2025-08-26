@@ -23,15 +23,27 @@ main div {
 main div section {
     background-color: rgba(170, 189, 217, 0.2);
     border: rgba(170, 189, 217, 1) dashed 2px;
-    width: 443px;
-    height: 397px;
     border-radius: 10px;
     justify-self: center;
     align-self: center;
 }
 
+main div section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
 main div section ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     height: 93px;
     width: 422px;
     background-color: white;
+    list-style: none;
+    border-radius: 10px;
 }
