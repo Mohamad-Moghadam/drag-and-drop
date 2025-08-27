@@ -1,21 +1,20 @@
-const item = document.querySelectorAll("li")
+const items = document.querySelectorAll("li")
 const left = document.querySelector(".left-ul")
 const right = document.querySelector(".right-ul")
 
 function dragAndDrop (item) {
-    item.addEventListener("dragstart", (dragged_item) => {
-        dragged_item.dataTransfer.setData("id", item.id)
+    item.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", event.target.id)
     })
 
-    [left, right].forEach((ul) => {
-    ul.addEventListener("dragover", (e) => e.preventDefault())
+    items.forEach(item => dragAndDrop(item))
 
-    ul.addEventListener("drop", (e) => {
-    e.preventDefault()
-    const id = e.dataTransfer.getData("id")
+    right.addEventListener("dragover", (event) => event.preventDefault())
+    
+    right.addEventListener("drop", (event) => {
+    event.preventDefault()
+    const id = event.dataTransfer.getData("text/plain")
     const draggedItem = document.getElementById(id)
-    ul.appendChild(draggedItem)
+    right.appendChild(draggedItem)
     })
-})
-
 }
