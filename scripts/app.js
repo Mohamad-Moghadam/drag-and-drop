@@ -1,20 +1,23 @@
-const items = document.querySelectorAll("li")
-const left = document.querySelector(".left-ul")
-const right = document.querySelector(".right-ul")
+document.querySelectorAll("li").forEach(li => {
+  li.addEventListener("dragstart", (e) => {
+    draggedItem = li;
+    li.classList.add("dragging");
+  });
 
-function dragAndDrop (item) {
-    item.addEventListener("dragstart", (event) => {
-        event.dataTransfer.setData("text/plain", event.target.id)
-    })
+  li.addEventListener("dragend", (e) => {
+    draggedItem = null;
+    li.classList.remove("dragging");
+  });
+});
 
-    items.forEach(item => dragAndDrop(item))
+document.querySelectorAll("ul").forEach(ul => {
+  ul.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
 
-    right.addEventListener("dragover", (event) => event.preventDefault())
-    
-    right.addEventListener("drop", (event) => {
-    event.preventDefault()
-    const id = event.dataTransfer.getData("text/plain")
-    const draggedItem = document.getElementById(id)
-    right.appendChild(draggedItem)
-    })
-}
+  ul.addEventListener("drop", (e) => {
+    if (draggedItem) {
+      ul.appendChild(draggedItem);
+    }
+  });
+});

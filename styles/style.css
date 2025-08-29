@@ -47,3 +47,13 @@ main div section ul li {
     list-style: none;
     border-radius: 10px;
 }
+
+.right-ul {
+    height: 500px;
+    width: 500px;
+}
+
+.left-ul {
+    height: 500px;
+    width: 500px;
+}
